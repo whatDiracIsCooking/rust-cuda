@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {}
+    },
+    "sequential-thinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "serena": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/home/lostica/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "/home/lostica/projects/calaman_c_root/calaman_c/.serena/contexts/general.yml",
+        "--project",
+        "."
+      ]
+    }
+  }
+}

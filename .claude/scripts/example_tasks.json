@@ -1,0 +1,55 @@
+{
+  "tasks": [
+    {
+      "name": "analyze_main_file",
+      "prompt": "Provide a high-level overview of this file. Include: purpose, key classes/functions, and dependencies.",
+      "files": ["src/main.cu"],
+      "model": "sonnet",
+      "tools": [
+        "mcp__serena__read_file",
+        "mcp__serena__get_symbols_overview",
+        "mcp__serena__find_symbol"
+      ]
+    },
+    {
+      "name": "find_cuda_kernels",
+      "prompt": "Find all CUDA kernel definitions (functions with __global__ qualifier) and list their signatures.",
+      "files": ["src/kernels/"],
+      "tools": [
+        "mcp__serena__list_dir",
+        "mcp__serena__search_for_pattern",
+        "mcp__serena__read_file"
+      ]
+    },
+    {
+      "name": "check_error_handling",
+      "prompt": "Review error handling patterns. Look for CUDA API calls and check if errors are properly handled.",
+      "files": ["src/utils.cu"],
+      "tools": [
+        "mcp__serena__read_file",
+        "mcp__serena__search_for_pattern",
+        "mcp__serena__find_symbol"
+      ]
+    },
+    {
+      "name": "document_public_api",
+      "prompt": "Generate concise documentation for all public APIs. Focus on function signatures and brief descriptions.",
+      "files": ["include/api.h"],
+      "tools": [
+        "mcp__serena__read_file",
+        "mcp__serena__get_symbols_overview",
+        "mcp__serena__find_symbol"
+      ]
+    },
+    {
+      "name": "test_coverage_analysis",
+      "prompt": "Analyze test coverage. List which functions have tests and which are missing test coverage.",
+      "files": ["tests/"],
+      "tools": [
+        "mcp__serena__list_dir",
+        "mcp__serena__read_file",
+        "mcp__serena__search_for_pattern"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+description: Onboarding context
+prompt: |
+  You are running in onboarding context. Help the user to onboard to the project.
+excluded_tools:
+  - replace_regex
+  - read_file
+  - think_about_whether_you_are_done
+  - think_about_task_adherence
+  - think_about_collected_information
+  - prepare_for_new_conversation
+  - list_dir
+  - search_for_pattern
+  - get_current_config
+  - find_file
+  - execute_shell_command
+  - create_text_file
+  - delete_memory
+  - write_memory
+
+tool_description_overrides: {}

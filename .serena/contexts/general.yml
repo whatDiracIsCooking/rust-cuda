@@ -1,0 +1,23 @@
+description: General agent.
+prompt: |
+  You are running in agent context where the system prompt is provided externally. You should use symbolic
+  tools when possible for code understanding and modification.
+excluded_tools:
+  - replace_regex
+  - read_file
+  - think_about_whether_you_are_done
+  - think_about_task_adherence
+  - think_about_collected_information
+  - prepare_for_new_conversation
+  - check_onboarding_performed
+  - onboarding
+  - list_dir
+  - search_for_pattern
+  - get_current_config
+  - find_file
+  - execute_shell_command
+  - create_text_file
+  - delete_memory
+  - write_memory
+
+tool_description_overrides: {}
