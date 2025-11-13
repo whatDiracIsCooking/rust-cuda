@@ -2,3 +2,7 @@ book
 /target
 **/.vscode
 .devcontainer
+.claude
+.serena
+.mcp.json
+
