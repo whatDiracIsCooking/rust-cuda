@@ -38,7 +38,7 @@ around to adding it yet.
 | Printing | ✔️ |
 | Panicking | ✔️ | Currently just traps (aborts) because of weird printing failures in the panic handler |
 | Float Ops | ✔️ | Maps to libdevice intrinsics, calls to libm are not intercepted though, which we may want to do in the future |
-| Atomics | ❌ | 
+| Atomics | 🟨 | cuda_std provides atomic floats and partial atomic integer support. core::sync::atomic does not work on GPU (see cuda_std::atomic docs) | 
 
 # CUDA Libraries
 
@@ -77,15 +77,15 @@ on things used by the wide majority of users.
 | Load Functions Using Cache Hints | ❌ |
 | Store Functions Using Cache Hints | ❌ |
 | Time Function | ✔️ | 
-| Atomic Functions | ❌ |
+| Atomic Functions | 🟨 | Atomic floats (f32, f64) are supported with block/device/system scopes. Integer atomics need completion |
 | Address Space Predicate Functions | ✔️ | Address Spaces are implicitly handled, but they may be added for exotic interop with CUDA C/C++ |
 | Address Space Conversion Functions | ✔️ |
 | Alloca Function | ➖ |
 | Compiler Optimization Hint Functions | ➖ | Existing `core` hints work |
-| Warp Vote Functions | ❌ |
-| Warp Match Functions | ❌ |
-| Warp Reduce Functions | ❌ |
-| Warp Shuffle Functions | ❌ |
+| Warp Vote Functions | ✔️ | all, any, ballot supported |
+| Warp Match Functions | ✔️ | match_any, match_all for i32/i64/u32/u64/f32/f64 |
+| Warp Reduce Functions | 🟨 | Supported for i32, u32. Missing i64, u64, f32, f64 |
+| Warp Shuffle Functions | ✔️ | up, down, idx, xor for all integer and float types |
 | Nanosleep | ✔️ |
 | Warp Matrix Functions (Tensor Cores) | ❌ |
 | Asynchronous Barrier | ❌ |
