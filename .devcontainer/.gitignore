@@ -1,0 +1,2 @@
+# Don't commit the OptiX SDK installer to git (it's large and has licensing restrictions)
+NVIDIA-OptiX-SDK-*.sh

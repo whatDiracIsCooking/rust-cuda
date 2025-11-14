@@ -1,14 +1,19 @@
 {
-  "image" : "ghcr.io/rust-gpu/rust-cuda-ubuntu24-cuda12:latest",
-  // Uncoment the following lines to use a Dockerfile instead of a prebuilt image.
-  // "build": {
-  //   "dockerfile": "${localWorkspaceFolder}/container/ubuntu24-cuda12/Dockerfile",
-  //   "context": "${localWorkspaceFolder}"
-  // },
+  // Using custom Dockerfile with OptiX support
+  "build": {
+    "dockerfile": "${localWorkspaceFolder}/.devcontainer/Dockerfile",
+    "context": "${localWorkspaceFolder}"
+  },
   "containerEnv": {
-    "NVIDIA_DRIVER_CAPABILITIES": "all"
+    "NVIDIA_DRIVER_CAPABILITIES": "all",
+    "OPTIX_ROOT": "/opt/optix",
+    "OPTIX_ROOT_DIR": "/opt/optix"
   },
   "runArgs": ["--runtime=nvidia", "--gpus", "all"],
+  "mounts": [
+    // Uncomment and adjust path to mount OptiX SDK from host
+    // "source=/path/to/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64,target=/opt/optix,type=bind"
+  ],
   "customizations": {
     "vscode": {
       "extensions": ["rust-lang.rust-analyzer"]

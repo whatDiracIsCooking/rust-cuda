@@ -1,0 +1,2 @@
+# Placeholder file to allow Docker COPY to work when OptiX installer is not present
+# Place NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64.sh in this directory to include it in the build
